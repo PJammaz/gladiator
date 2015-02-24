@@ -1,0 +1,8 @@
+class characters(object):
+    def __init__(self, name, HP, attack, defense, description):
+        self.name = name
+        self.HP = HP
+        self.attack = attack
+        self.defense = defense
+        self.description = description
+        
