@@ -1,0 +1,57 @@
+'''Randomly generates names based on sets of syllables/sounds'''
+
+import random
+from random import choice
+
+merica = 'sm ith joh nso n wil lia ms jo nes bro wn da vis mil ler wil son mo ore tay lor an der son tho mas jac kso whi te har ris mar tin thom pson gar ci a mar tin ez rob in son cl ark rod ri gu ez le wis lee wal ker hall al len yo ung her nan dez ki ng'.split()
+male = 'ja mes jo hn rob ert mic hael wil liam dav id rich ard char les jos eph thom as chri sto pher dan iel pa ul ma rk don ald geor ge ken neth ste ven ed ward bri an ron ald ant ho ny kev in ja son jef'.split()
+female = 'ma ry pa tri cia lin da bar ba ra el iz ab eth jen nif er mar ia su san mar gar et do ro thy li sa nan cy kar en bet ty he len san dra don na ca rol ru th sha ron mi che lle lau ra sar ah kim ber ly de bor ah'.split()
+middle = 'am aeg nor arie dir ras rod roth aire an grod ar ed hel gon be leg ca ran thir ce leb orn rian orm cird cu ruf in dae ron de neth or du il ear wen en dil ec the lion ed ra hil eg al moth el dal ote em ma kil en we elu thin gol mo rond erd hil e ol er es tor fea nor fin ar dis dui las gol fin gon rod fel ag und'.split()
+
+first = 'jam joh rob mic will dav rich char jos thom chr dan pau mar don geor kenn stev ed br ron anth kev jas jef mar pat lind barb el jenn marg sus dor lind nan kar bett hel san don carr rut shar mich laur sar kimb deb wad fred enr terr ren ken set trac serg kir perr salv marsh and virg ros dar will clift morr is jul'.split()
+second = 'es ohn ert hael iam id ard les eph as ist oph er iel aul ark ald orge eth en ward ian ald ony in on ary atr ic ia a ar a iz ab eth if er ia an ar et oth sa cy en y en dra na ol th on che lle ura ah er ly or ah ade ie ique ence uard o ene ance ent eth ion io irk err y ad or all il oss yl ard on orr is aac ian'.split()
+
+firsttolkien = 'am aeg fin an ar be car cele cir cur dae den dui ear ec ed eg el en e er fea gal gil gim glor gwin hal id im in ir leg lin lu tin mab mae mag mah mir mith nel nerd nim ol oro pen quen ono ro ru sae sal ta thran tur tu vor mar'.split()
+midtolkien = 'nor arie dir ras rod roth aire ed hel on eg an thir born brian brim bor gorm dan fin ron thor lin wen en dil the lion ra hil al moth da lote em mak il en we mo rond el ye es tor nor ar fin dis dui las gol fin gon rod gund ad hon ad riel ath il dor ion li del ril min in ye dis glor we wion ime las dir thien lung dhros glin lor tan iel rell as an el rod el reth pher phin odh lod nar mil ros ant ta tie duil gon or ron'.split()
+
+firstorc = 'az balc bol gol gor grish lag lug mau muz orc oth rad shag snag uf ug goth brak par uk lag xu zal mil gna lar ert dur gha shag lam shar bug mor bum at zon glu sor ulm yer'.split()
+midorc = 'og meg g dog fim bul bag gol nakh duf hur gash obal rod bug rat ah thak luk mog ed zuran gurada gag thu ug arg hul akh ek guth urz ak bug arn dur ash orn um ub dagh agh ush gulg bar gu gug gha rug'.split()
+
+descriptions = 'defiler grey red ugly devil demon lost hidden elder young lionheart imbecile little yellow black hammer'.split()
+
+def getdesc():
+    description = choice(descriptions)
+    return description
+
+def createName(howMany, nameSet):
+    newName = ''
+    for k in range(howMany):
+        for i in range(random.randint(1, 3)):
+            newName += choice(nameSet)
+        newName = ''
+
+def combineName(howMany, set1, set2):
+    '''One set is only used to create the first part of names.
+A second set is only used for the second and third parts of the name.
+It is randomly decided whether the name has two or three parts.
+'''
+    newName = ''
+    for k in range(howMany):
+        newName += choice(set1)
+        newpart = choice(set2)
+        if newpart[0] == newName[-1]:
+            newpart = newpart[1:5]
+        newName += newpart
+        newpart = ''
+        print(newName)
+        newName = ''
+
+def enemyNames():
+    newName = ''
+    newName += choice(first)
+    newpart = choice(second)
+    if newpart[0] == newName[-1]:
+        newpart = newpart[1:5]
+    newName += newpart
+    newName = newName.capitalize()
+    return newName
