@@ -1,0 +1,12 @@
+'''Allows player to enter these commands'''
+
+import gladiator
+import classes
+
+def look(inRoom):
+    looked = input('What would you like to look at? \n')
+    if looked in inRoom:
+        inRoom[looked]
+
+def attack():
+    pass
