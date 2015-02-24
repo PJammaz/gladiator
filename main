@@ -1,0 +1,74 @@
+'''Simple randomly-generated text-based battle RPG.
+Character is a gladiator trapped in the arena.
+Player must defeat a certain amount of enemies before they fight the arena master and then become the arena master themself.
+Enemies can drop potions, weapons and armor that make the character more indestructible.'''
+
+import random
+import enemygen
+import classes
+import namesgen
+import actions
+from random import choice
+
+gamestates = {'battle', 'game over', 'stats', 'inventory', 'other'}
+
+actions = {'look':'actions.look',}
+
+player = classes.characters('', 1, 2, 3, '')
+
+def run(game_state):
+    while True:
+        choice = input('Enter a command.\n').lower()
+        if choice in actions:
+            choice[actions]
+
+def newGame():
+    game_state = 'other'
+    print('''
+Welcome to Mandrew\'s Arena!
+You are a slave, forced to fight
+in the arena for your life.
+If you fight well enough, you may
+be able to gain your freedom.
+''')
+    player = classes.characters(input('''
+What is your character\'s name?
+'''), 10, 5, 5, '')
+    intro(player)
+    ##global player
+
+def intro(player):
+    print('''
+In front of you, the bars rise
+into the ceiling, grinding every
+inch of the way.  Heat and dust
+pours into the doorway, and the
+murmur of the crowd quickly turns
+into bloodlust.  At the opposite
+end of the arena, a bulky man in
+chain armor stands in a booth and
+addresses the audience.
+''')
+    print('''
+"Welcome to my arena!  I am Mandrew,
+and my hope is that my warriors
+fight and die to entertain you.
+Our first fighter is ''' + player.name + '''
+and they are excited to die with
+honor!"
+''')
+    print('''
+Someone shoves you from behind
+and you stumble into the dusty
+arena.  The sound is overwhelming,
+and sweat is already pouring down
+you face.  A weapon lands at your
+feet.
+''')
+    
+
+def battle():
+    enemy = classes.characters(namesgen.enemyNames(), 1, 2, 3, namesgen.getdesc())
+    print('Your enemy is ' + enemy.name + ' the ' + enemy.description + '.')
+
+newGame()
